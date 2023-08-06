@@ -1,10 +1,12 @@
+import { getUserLocation } from '@/utils/getUserLocation'
+import { MapView } from '@/features/maps/components'
+import { toast } from 'react-hot-toast'
 import { useEffect } from 'react'
 import { usePlacesStore } from './store'
-import { getUserLocation } from '@/utils/getUserLocation'
-import { toast } from 'react-hot-toast'
+import { LoadingScreen } from '@/components/LoadingScreen'
 
 export function MapsApp() {
-   const userLocation = usePlacesStore((s) => s.userLocation)
+   const loading = usePlacesStore((s) => s.loading)
    const setUserLocation = usePlacesStore((s) => s.setUserLocation)
 
    useEffect(() => {
@@ -13,18 +15,14 @@ export function MapsApp() {
             setUserLocation(value)
             toast.success('User location updated successfully')
          })
-         .catch((err) => {
-            if (err instanceof Error) {
-               toast.error(err.message)
-            }
+         .catch((err: Error) => {
+            toast.error(err.message)
          })
    }, [setUserLocation])
 
-   return (
-      <div>
-         <h1>hello world</h1>
+   if (loading) {
+      return <LoadingScreen />
+   }
 
-         <pre>{JSON.stringify(userLocation, null, 4)}</pre>
-      </div>
-   )
+   return <MapView />
 }
