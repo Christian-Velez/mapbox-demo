@@ -45,7 +45,7 @@ export function SearchBar() {
 
       for (const place of places) {
          const popup = new Popup().setHTML(
-            `<h2 className='font-bold'>${place.placeName}</h2> <p>${place.address}</p>`
+            `<h2 class='font-bold text-base'>${place.placeName}</h2> <p>${place.address}</p>`
          )
 
          const marker = new Marker({ color: '#FC8181' })

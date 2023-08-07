@@ -17,7 +17,7 @@ export function CenterButton() {
             className=' bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded h-10'
             onClick={centerMap}
          >
-            My current location
+            Current location
          </button>
       </div>
    )

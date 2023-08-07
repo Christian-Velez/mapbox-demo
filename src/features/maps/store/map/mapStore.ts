@@ -1,3 +1,4 @@
+import { Route } from '@/features/maps/api/directions'
 import mapboxgl, { Marker } from 'mapbox-gl'
 import { create } from 'zustand'
 
@@ -8,6 +9,9 @@ type Store = {
 
    markers: Marker[]
    setMarkers: (markers: Marker[]) => void
+
+   selectedRoute?: Route
+   setSelectedRoute: (route: Route) => void
 }
 
 export const useMapStore = create<Store>()((set) => ({
@@ -21,5 +25,9 @@ export const useMapStore = create<Store>()((set) => ({
 
    setMarkers: (markers: Marker[]) => {
       set({ markers })
+   },
+
+   setSelectedRoute: (route: Route) => {
+      set({ selectedRoute: route })
    },
 }))

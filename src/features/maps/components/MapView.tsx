@@ -23,7 +23,9 @@ export function MapView() {
          zoom: 12,
       })
 
-      const locationPopup = new Popup().setHTML(`<h4>Current location</h4>`)
+      const locationPopup = new Popup().setHTML(
+         `<h2 class='font-bold text-base'>Current location</h2>`
+      )
 
       setMap(map)
 
